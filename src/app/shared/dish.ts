@@ -1,3 +1,4 @@
+
 export class Dish {
     name: string;
     image: string;
@@ -6,3 +7,4 @@ export class Dish {
     price: string;
     description: string;
 }
+
