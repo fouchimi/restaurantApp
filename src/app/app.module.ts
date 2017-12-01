@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule, MatListModule} from '@angular/material';
+import { MatToolbarModule, MatGridListModule, MatCardModule, MatButtonModule} from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -22,7 +22,9 @@ import { MenuComponent } from './menu/menu.component';
     BrowserAnimationsModule,
     FormsModule,
     MatToolbarModule,
-    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatButtonModule,
     HttpModule,
     FlexLayoutModule
   ],
