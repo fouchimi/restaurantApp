@@ -20,19 +20,28 @@
     </mat-card>
   </div>
 
-  <div fxFlex="40">
-    <h3>Comments</h3>
-    <mat-list fxFlex>
-      <mat-list-item *ngFor="let comment of dish.comments">
-        <h1 mat-line> {{comment.comment}} </h1>
-        <p mat-line>
-          <span> {{comment.rating}} </span>
-        </p>
-        <p mat-line>
-          <span> {{comment.author}}</span> <span>{{comment.date | date}}</span>
-        </p>
-      </mat-list-item>
-    </mat-list>
+  <div fxFlex="50">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>Comments</h3>
+        </mat-card-title>
+        <mat-card-content>
+          <mat-list fxFlex>
+            <mat-list-item *ngFor="let comment of dish.comments">
+              <h1 mat-line> {{comment.comment}} </h1>
+              <p mat-line>
+                <span> {{comment.rating}} </span>
+              </p>
+              <p mat-line>
+                <span> {{comment.author}}</span>
+                <span>{{comment.date | date}}</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card-header>
+    </mat-card>
   </div>
 
 </div> 
