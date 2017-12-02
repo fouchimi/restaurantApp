@@ -6,7 +6,6 @@ import { setTimeout } from 'timers';
 
 import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/observable/of';
 
@@ -15,17 +14,21 @@ export class DishService {
 
   constructor() { }
 
-  getDishes(): Promise<Dish[]> {
+  getDishes(): Observable<Dish[]> {
     // Simulate server latency with 2 seconds delay
-    return Observable.of(DISHES).delay(2000).toPromise();
+    return Observable.of(DISHES).delay(2000);
   }
 
-  getDish(id: number): Promise<Dish> {
-    return Observable.of(DISHES.filter((dish) => (dish.id === id))[0]).delay(2000).toPromise();
+  getDish(id: number): Observable<Dish> {
+    return Observable.of(DISHES.filter((dish) => (dish.id === id))[0]).delay(2000);
   }
 
-  getFeaturedDish(): Promise<Dish> {
-    return Observable.of(DISHES.filter((dish) => dish.featured)[0]).delay(2000).toPromise();
+  getFeaturedDish(): Observable<Dish> {
+    return Observable.of(DISHES.filter((dish) => dish.featured)[0]).delay(2000);
+  }
+
+  getDishIds(): Observable<number[]> {
+    return Observable.of(DISHES.map(dish => dish.id)).delay(2000);
   }
 
 }
