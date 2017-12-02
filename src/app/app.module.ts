@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule, MatGridListModule, MatCardModule, MatButtonModule, MatListModule} from '@angular/material';
+// tslint:disable-next-line:max-line-length
+import { MatToolbarModule, MatGridListModule, MatCardModule, MatButtonModule, MatListModule, MatDialogModule, MatFormFieldModule, MatCheckboxModule, MatInputModule } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -16,13 +17,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoginComponent } from './login/login.component';
 
 import { DishService } from './services/dish.service';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -46,11 +47,18 @@ import { LoginComponent } from './login/login.component';
     MatCardModule,
     MatButtonModule,
     MatListModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatInputModule,
     HttpModule,
     FlexLayoutModule,
     AppRoutingModule
   ],
   providers: [DishService, PromotionService, LeaderService],
+  entryComponents: [
+    LoginComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
