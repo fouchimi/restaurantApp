@@ -2,8 +2,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-// tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatGridListModule, MatCardModule, MatButtonModule, MatListModule, MatDialogModule, MatFormFieldModule, MatCheckboxModule, MatInputModule, MatSlideToggleModule, MatSelectModule } from '@angular/material';
+import { MatToolbarModule ,
+  MatGridListModule ,
+  MatCardModule ,
+  MatButtonModule ,
+  MatListModule ,
+  MatDialogModule ,
+  MatFormFieldModule ,
+  MatCheckboxModule ,
+  MatInputModule ,
+  MatSlideToggleModule ,
+  MatSelectModule ,
+  MatProgressSpinnerModule
+ } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +65,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatInputModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     HttpModule,
     ReactiveFormsModule,
     FlexLayoutModule,
