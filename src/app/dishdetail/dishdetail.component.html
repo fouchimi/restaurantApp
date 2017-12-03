@@ -49,7 +49,7 @@
                 <span> {{comment.rating}} </span>
               </p>
               <p mat-line>
-                <span> {{comment.author}}</span>
+                <span> --{{comment.author}}</span>
                 <span>{{comment.date | date}}</span>
               </p>
             </mat-list-item>
@@ -60,16 +60,11 @@
 
     <div layout="row" layout-align="start center" class="full-width">
       <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-        <mat-list>
-          <mat-list-item> {{ feedbackForm.value.name }}</mat-list-item>
-          <mat-list-item> {{ feedbackForm.value.rating}}</mat-list-item>
-          <mat-list-item> {{ feedbackForm.value.feedback }}</mat-list-item>
-        </mat-list>
         <p>
-          <mat-form-field class="half-width" dividerColor="{{(formErrors.name) ? 'warn' : 'primary'}}">
-            <input matInput formControlName="name" placeholder="Name" type="text" required>
+          <mat-form-field class="half-width" dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="author" placeholder="Name" type="text" required>
             <mat-hint>
-              <span [hidden]="!(formErrors.name)">{{formErrors.name}}</span>
+              <span [hidden]="!(formErrors.author)">{{formErrors.author}}</span>
             </mat-hint>
           </mat-form-field>
         </p>
@@ -77,10 +72,10 @@
           <mat-slider formControlName="rating" min="0" max="5" step="1"></mat-slider>
         </p>
         <p>
-          <mat-form-field class="full-width" dividerColor="{{(formErrors.feedback) ? 'warn' : 'primary'}}">
-            <textarea matInput formControlName="feedback" placeholder="Your Feedback" rows="7" required></textarea>
+          <mat-form-field class="full-width" dividerColor="{{(formErrors.comment) ? 'warn' : 'primary'}}">
+            <textarea matInput formControlName="comment" placeholder="Your comment" rows="7" required></textarea>
             <mat-hint>
-              <span [hidden]="!(formErrors.feedback)">{{formErrors.feedback}}</span>
+              <span [hidden]="!(formErrors.comment)">{{formErrors.comment}}</span>
             </mat-hint>
           </mat-form-field>
         </p>
