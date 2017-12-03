@@ -22,8 +22,8 @@ export class ContactComponent implements OnInit {
   validationMessages = {
     'firstname': {
       'required': 'First Name is required',
-      'minLength': 'First Name must be at least 2 characters long',
-      'maxLength': 'First Name cannot more than 25 characters long'
+      'minlength': 'First Name must be at least 2 characters long',
+      'maxlength': 'First Name cannot more than 25 characters long'
     },
     'lastname': {
       'required': 'Last Name is required',
@@ -67,18 +67,16 @@ export class ContactComponent implements OnInit {
   onValueChanged(data?: any) {
     if (!this.feedbackForm) { return; }
     const form = this.feedbackForm;
+    // tslint:disable-next-line:forin
     for (const field in this.formErrors) {
       // clear previous error message (if any)
-      if (this.formErrors.hasOwnProperty(field)) {
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (control && control.dirty && !control.valid) {
-          const messages = this.validationMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + ' ';
-            }
-          }
+      this.formErrors[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.validationMessages[field];
+        // tslint:disable-next-line:forin
+        for (const key in control.errors) {
+          this.formErrors[field] += messages[key] + ' ';
         }
       }
     }

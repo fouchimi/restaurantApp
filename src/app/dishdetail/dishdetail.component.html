@@ -33,28 +33,61 @@
     </mat-spinner>
   </div>
 
-  <div fxFlex="50" *ngIf="dish">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <h3>Comments</h3>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-list fxFlex>
-          <mat-list-item *ngFor="let comment of dish.comments">
-            <h1 mat-line> {{comment.comment}} </h1>
-            <p mat-line>
-              <span> {{comment.rating}} </span>
-            </p>
-            <p mat-line>
-              <span> {{comment.author}}</span>
-              <span>{{comment.date | date}}</span>
-            </p>
-          </mat-list-item>
+  <div fxFlex="50" fxLayout="column" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="center" fxLayoutGap="5px" fxLayoutGap.xs="0">
+    <div fxFlex="50" *ngIf="dish">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h3>Comments</h3>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list fxFlex>
+            <mat-list-item *ngFor="let comment of dish.comments">
+              <h1 mat-line> {{comment.comment}} </h1>
+              <p mat-line>
+                <span> {{comment.rating}} </span>
+              </p>
+              <p mat-line>
+                <span> {{comment.author}}</span>
+                <span>{{comment.date | date}}</span>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div layout="row" layout-align="start center" class="full-width">
+      <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+        <mat-list>
+          <mat-list-item> {{ feedbackForm.value.name }}</mat-list-item>
+          <mat-list-item> {{ feedbackForm.value.rating}}</mat-list-item>
+          <mat-list-item> {{ feedbackForm.value.feedback }}</mat-list-item>
         </mat-list>
-      </mat-card-content>
-    </mat-card>
+        <p>
+          <mat-form-field class="half-width" dividerColor="{{(formErrors.name) ? 'warn' : 'primary'}}">
+            <input matInput formControlName="name" placeholder="Name" type="text" required>
+            <mat-hint>
+              <span [hidden]="!(formErrors.name)">{{formErrors.name}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-slider formControlName="rating" min="0" max="5" step="1"></mat-slider>
+        </p>
+        <p>
+          <mat-form-field class="full-width" dividerColor="{{(formErrors.feedback) ? 'warn' : 'primary'}}">
+            <textarea matInput formControlName="feedback" placeholder="Your Feedback" rows="7" required></textarea>
+            <mat-hint>
+              <span [hidden]="!(formErrors.feedback)">{{formErrors.feedback}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid">Submit</button>
+      </form>
+    </div>
+
   </div>
 
   <div [hidden]="dish">

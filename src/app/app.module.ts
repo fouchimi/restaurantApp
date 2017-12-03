@@ -13,7 +13,8 @@ import { MatToolbarModule ,
   MatInputModule ,
   MatSlideToggleModule ,
   MatSelectModule ,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatSliderModule
  } from '@angular/material';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -66,6 +67,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     MatSlideToggleModule,
     MatSelectModule,
     MatProgressSpinnerModule,
+    MatSliderModule,
     HttpModule,
     ReactiveFormsModule,
     FlexLayoutModule,
