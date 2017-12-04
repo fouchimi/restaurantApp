@@ -58,7 +58,7 @@
       </mat-card>
     </div>
 
-    <div layout="row" layout-align="start center" class="full-width">
+    <div *ngIf="dish" layout="row" layout-align="start center" class="full-width">
       <form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
         <p>
           <mat-form-field class="half-width" dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
@@ -86,9 +86,12 @@
   </div>
 
   <div [hidden]="dish">
-    <mat-spinner>
-      <h4>Loading ... Please Wait</h4>
-    </mat-spinner>
+    <mat-spinner></mat-spinner><h4>Loading ... Please Wait</h4>
+  </div>
+
+  <div *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 
 </div> 
