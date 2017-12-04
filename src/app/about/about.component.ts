@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
+import { baseURL } from '../shared/baseurl';
 
 @Component({
   selector: 'app-about',
