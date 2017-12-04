@@ -2,7 +2,7 @@
 <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
   fxLayoutGap="10px" fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -32,7 +32,7 @@
   </div>
 
   <div fxFlex="50" fxLayout="column" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="center" fxLayoutGap="5px" fxLayoutGap.xs="0">
-    <div fxFlex="50" *ngIf="dish">
+    <div fxFlex="50" *ngIf="dish" [@visibility]="visibility">
       <mat-card>
         <mat-card-header>
           <mat-card-title>
