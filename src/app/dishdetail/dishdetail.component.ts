@@ -20,6 +20,7 @@ import { baseURL } from '../shared/baseurl';
 export class DishdetailComponent implements OnInit {
 
   dish: Dish;
+  dishcopy = null;
   dishIds: number[];
   prev: number;
   next: number;
@@ -59,7 +60,7 @@ export class DishdetailComponent implements OnInit {
 
   createForm() {
     this.feedbackForm = this.fb.group({
-      rating: ['', Validators.required],
+      rating: 5,
       comment: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       date: ''
@@ -76,7 +77,7 @@ export class DishdetailComponent implements OnInit {
 
     this.route.params
        .switchMap((params: Params) => this.dishService.getDish(+params['id']))
-       .subscribe(dish => {this.dish = dish; this.setPrevNext(dish.id); }, 
+       .subscribe(dish => {this.dish = dish; this.dishcopy = dish, this.setPrevNext(dish.id); },
       errmess => this.errMess = <any>errmess);
   }
 
@@ -92,11 +93,13 @@ export class DishdetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.feedbackForm.value);
-    this.feedbackForm.value.date = new Date().toISOString();
-    this.dish.comments.push(this.feedbackForm.value);
+    this.comment = this.feedbackForm.value;
+    this.comment.date = new Date().toISOString();
+    this.dishcopy.comments.push(this.comment);
+    this.dishcopy.save()
+                 .subscribe(dish => this.dish = dish);
     this.feedbackForm.reset({
-      rating: '',
+      rating: 5,
       comment: '',
       author: '',
       date: ''
